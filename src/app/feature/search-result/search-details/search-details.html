@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="header">
+    <h1>{{ destination | titlecase}}: {{ hotels.length }} hotels found</h1>
+
+    <div class="sort-control">
+      <label for="sort">Sort by:</label>
+      <select id="sort" [(ngModel)]="sortOption" (ngModelChange)="onSort(sortOption)">
+        <option value="recommended">Recommended</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="rating">Rating</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="hotel-list">
+    <div class="hotel-card" *ngFor="let hotel of hotels">
+      <div class="hotel-image">
+        <img src="/assets/hero.jpg" [alt]="hotel.name">
+      </div>
+
+      <div class="hotel-info">
+        <div class="hotel-main">
+          <h2 class="hotel-name">{{ hotel.name }}</h2>
+          <p class="hotel-location">{{ hotel.address }}, {{ hotel.city }}, {{ hotel.country }}</p>
+
+          <div class="hotel-stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
+
+        <div class="rate">
+          <div class="rating-badge excellent">
+            <span class="rating-score">
+              {{ hotel.averageRating > 0 ? (hotel.averageRating | number:'1.1-1') : 0 }}
+            </span>
+          </div>
+          <span class="rating-label">
+            {{ hotel.averageRating >= 9 ? 'Excellent' : hotel.averageRating >= 7 ? 'Good' : 'Average' }}
+          </span>
+
+
+          <div class="price">
+            <span class="price-amount">${{ hotel.lowestPrice }}</span>
+            <span class="price-label">per night</span>
+          </div>
+
+          <button class="btn-details" (click)="viewDetails(hotel.id)">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="parent">
+  <div class="search-summary">
+    <h2 class="title">Your Search</h2>
+    <div class="summary-details">
+      <div class="detail-row">
+        <span class="label">Destination</span>
+        <span class="value">{{ destination | titlecase}}</span>
+      </div>
+      <div class="check-dates">
+      <div class="detail-row">
+        <span class="label">Check-in</span>
+        <span class="value">{{ checkin }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="label">Check-out</span>
+        <span class="value">{{ checkout }}</span>
+      </div>
+      </div>
+
+    </div>
+    <a class="change-link" routerLink="/home">Change Search</a>
+  </div>
+    <div class="filter">
+  <div class="price-filter">
+    <h4 class="filter-title">Price Range</h4>
+    <input type="range" min="50" max="1000" [(ngModel)]="priceValue" class="price-slider" />
+    <div class="price-labels">
+      <span>$50</span>
+      <span class="max">${{ priceValue }}</span>
+    </div>
+    <button class="filter-btn" (click)="onPriceChange(priceValue)" >Apply Filter</button>
+  </div>
+</div>
+
+</div>
