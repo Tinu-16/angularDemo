@@ -1,0 +1,39 @@
+<div class="hotel-form-container">
+<h2 class="heading">{{ isEditMode ? 'Edit Hotel' : 'Add Hotel' }}</h2>  
+ <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Hotel Name</label>
+      <input id="name" type="text" formControlName="name" />
+      <div class="error" *ngIf="hotelForm.get('name')?.invalid && hotelForm.get('name')?.touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" type="text" formControlName="address" />
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input id="city" type="text" formControlName="city" />
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input id="country" type="text" formControlName="country" />
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+      <div class="error" *ngIf="hotelForm.get('phoneNumber')?.invalid && hotelForm.get('phoneNumber')?.touched">
+        Enter a valid 10-digit phone number
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="hotelForm.invalid">Save Hotel</button>
+  </form>
+</div>
+

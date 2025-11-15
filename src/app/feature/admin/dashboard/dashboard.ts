@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {Sidebar} from '../sidebar/sidebar'
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { HotelList } from './hotel-list/hotel-list';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet,],
+  imports: [RouterOutlet,RouterLink],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

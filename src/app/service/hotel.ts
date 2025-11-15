@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HotelSearchParams } from '../shared/models/LoginModel';
 import { HotelModel } from '../shared/models/HotelModel';
+import { HotelDetailsDto } from '../shared/models/HotelDetailsDto';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +19,8 @@ export class Hotel {
 
   constructor(private http: HttpClient) {}
 
-  getHotels(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getHotels(): Observable<HotelModel[]> {
+    return this.http.get<HotelModel[]>(this.apiUrl);
   }
 
   getDistinctCities(): Observable<string[]> {
@@ -80,5 +81,8 @@ getHotelDetails(id: number, searchParams: HotelSearchParams): Observable<HotelMo
   return this.http.get<HotelModel>(`${this.apiUrl}/${id}/details`, { params });
 }
 
+getHotelById(id: number): Observable<HotelDetailsDto> {
+  return this.http.get<HotelDetailsDto>(`${this.apiUrl}/${id}`);
+}
 
 }

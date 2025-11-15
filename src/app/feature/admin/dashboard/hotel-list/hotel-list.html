@@ -1,1 +1,35 @@
-<div class="list"></div>
+<div class="hotel-list-container">
+  <!-- Header with Add button -->
+  <div class="hotel-list-header">
+    <h2>Hotel List</h2>
+    <button class="btn add-btn" routerLink="/dashboard/add-hotel">+ Add Hotel</button>
+  </div>
+
+  <!-- Table -->
+  <table class="hotel-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Hotel Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Contact Details</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let hotel of hotels; let i = index">
+        <td>{{ i + 1 }}</td> 
+        <td>{{ hotel.name }}</td>
+        <td>{{ hotel.address }}</td>
+        <td>{{ hotel.city }}</td>
+        <td>{{ hotel.country }}</td>
+        <td>{{ hotel.phoneNumber }}</td>
+        <td>
+            <button class="btn edit-btn" (click)="ViewDetails(hotel.id)">View Details</button>
+        </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
