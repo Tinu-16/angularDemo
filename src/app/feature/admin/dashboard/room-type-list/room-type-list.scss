@@ -1,0 +1,87 @@
+.room-type-container {
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.room-type-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.room-type-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.add-btn {
+  background: #007bff;
+  color: white;
+}
+
+.add-btn:hover {
+  background: #0056b3;
+}
+
+.room-type-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.room-type-table th,
+.room-type-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.room-type-table th {
+  background: #007bff;
+  color: white;
+}
+
+.edit-btn {
+  background: #3498db;
+  color: black;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background: #7b7b7a;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+  margin-right: 5px;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+.view-btn {
+  background: #28a745;
+  color: white;
+}
+
+.view-btn:hover {
+  background: #218838;
+}
+
+.empty-message {
+  margin-top: 15px;
+  font-style: italic;
+  color: #666;
+}

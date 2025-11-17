@@ -1,0 +1,34 @@
+<div class="room-type-container">
+  <div class="room-type-header">
+    <h2>Room Types</h2>
+    <button class="btn add-btn" routerLink="/dashboard/add-roomType">Add Room Type</button>
+  </div>
+
+  <table class="room-type-table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Type Name</th>
+        <th>Description</th>
+        <th>Capacity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let roomType of roomTypes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ roomType.typeName }}</td>
+        <td>{{ roomType.description }}</td>
+        <td>{{ roomType.capacity }}</td>
+        <td>
+          <button class="btn edit-btn" [routerLink]="['/dashboard/edit-roomType', roomType.id]" [state]="{ roomType: roomType }">Edit</button>
+          <button class="btn delete-btn" (click)="deleteRoomType(roomType.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="roomTypes.length === 0" class="empty-message">
+    No room types available
+  </div>
+</div>

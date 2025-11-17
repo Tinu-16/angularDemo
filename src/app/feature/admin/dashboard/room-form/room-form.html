@@ -1,0 +1,53 @@
+<div class="room-form-container">
+  <h2>{{ isEditMode ? 'Edit Room' : 'Add Room' }}</h2>
+
+  <form [formGroup]="roomForm" (ngSubmit)="onSubmit()" class="room-form">
+    
+    <!-- Room Number -->
+    <div class="form-group">
+      <label for="roomNumber">Room Number</label>
+      <input id="roomNumber" type="text" formControlName="roomNumber" />
+      <div class="error" *ngIf="roomForm.get('roomNumber')?.touched && roomForm.get('roomNumber')?.invalid">
+        Room number is required
+      </div>
+    </div>
+
+    <!-- Room Type -->
+   <div class="form-group">
+  <label for="roomTypeName">Room Type</label>
+  <select id="roomTypeName" formControlName="roomTypeId">
+    <option value="">-- Select Room Type --</option>
+    <option *ngFor="let type of roomTypes" [value]="type.id">
+      {{ type.typeName }} (Capacity: {{ type.capacity }})
+    </option>
+  </select>
+  <div class="error" *ngIf="roomForm.get('roomTypeName')?.touched && roomForm.get('roomTypeName')?.invalid">
+    Room type is required
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="status">Status</label>
+  <select id="status" formControlName="status">
+     <option [value]="RoomStatus.Available">Available</option>
+     <option [value]="RoomStatus.UnderMaintenance">Under Maintenance</option>
+  </select>
+  <div class="error" *ngIf="roomForm.get('status')?.touched && roomForm.get('status')?.invalid">
+    Status is required
+  </div>
+</div>
+    <!-- Price -->
+    <div class="form-group">
+      <label for="pricePerNight">Price Per Night</label>
+      <input id="pricePerNight" type="number" formControlName="pricePerNight" />
+      <div class="error" *ngIf="roomForm.get('pricePerNight')?.touched && roomForm.get('pricePerNight')?.invalid">
+        Price per night must be greater than 0
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn primary-btn" [disabled]="roomForm.invalid">
+      {{ isEditMode ? 'Update Room' : 'Add Room' }}
+    </button>
+  </form>
+</div>

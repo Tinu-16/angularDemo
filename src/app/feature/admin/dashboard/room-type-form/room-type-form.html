@@ -1,0 +1,33 @@
+<div class="room-type-form-container">
+  <h2>{{ isEditMode ? 'Edit Room Type' : 'Add Room Type' }}</h2>
+
+  <form [formGroup]="roomTypeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="typeName">Type Name</label>
+      <input id="typeName" type="text" formControlName="typeName" />
+      <div *ngIf="roomTypeForm.get('typeName')?.touched && roomTypeForm.get('typeName')?.invalid" class="error">
+        Type Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="roomTypeForm.get('description')?.touched && roomTypeForm.get('description')?.invalid" class="error">
+        Description is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="capacity">Capacity</label>
+      <input id="capacity" type="number" formControlName="capacity" />
+      <div *ngIf="roomTypeForm.get('capacity')?.touched && roomTypeForm.get('capacity')?.invalid" class="error">
+        Capacity must be at least 1
+      </div>
+    </div>
+
+    <button class="btn add-btn" type="submit">
+      {{ isEditMode ? 'Update Room Type' : 'Add Room Type' }}
+    </button>
+  </form>
+</div>

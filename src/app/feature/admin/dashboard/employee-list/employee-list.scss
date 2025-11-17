@@ -1,0 +1,72 @@
+.employee-list-container {
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.employee-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.employee-list-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.add-btn {
+  background: #007bff;
+  color: white;
+}
+
+.add-btn:hover {
+  background: #0056b3;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.employee-table th {
+  background: #007bff;
+  color: white;
+}
+
+.edit-btn {
+  background:  #007bff;
+  color: black;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background:  #537294;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+  margin-right: 5px;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}

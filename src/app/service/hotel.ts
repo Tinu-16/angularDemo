@@ -85,4 +85,15 @@ getHotelById(id: number): Observable<HotelDetailsDto> {
   return this.http.get<HotelDetailsDto>(`${this.apiUrl}/${id}`);
 }
 
+addHotel(hotelData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, hotelData);
+  }
+
+updateHotel(id: number, hotelData: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${id}`, hotelData);
+}
+
+deleteHotel(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

@@ -1,0 +1,55 @@
+<div class="employee-form-container">
+  <h2 class="heading">{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h2>
+  
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+    <!-- Full Name -->
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input id="fullName" type="text" formControlName="fullName" [readonly]="isEditMode"/>
+      <div class="error" *ngIf="employeeForm.get('fullName')?.hasError('required') && employeeForm.get('fullName')?.touched">
+        Full Name is required
+      </div>
+      <div class="error" *ngIf="employeeForm.get('mi')?.hasError('required') && employeeForm.get('fullName')?.touched">
+        Full Name is required
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" [readonly]="isEditMode"/>
+      <div class="error" *ngIf="employeeForm.get('email')?.hasError('required') && employeeForm.get('email')?.touched">
+        Email is required
+      </div>
+      <div class="error" *ngIf="employeeForm.get('email')?.hasError('email') && employeeForm.get('email')?.touched">
+        Enter a valid email
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="form-group">
+      <label for="role">Role</label>
+      <input id="role" type="text" formControlName="role" />
+      <div class="error" *ngIf="employeeForm.get('role')?.hasError('required') && employeeForm.get('role')?.touched">
+        Role is required
+      </div>
+    </div>
+
+    <!-- Hotel Dropdown -->
+    <div class="form-group">
+      <label for="hotelId">Hotel</label>
+      <select id="hotelId" formControlName="hotelId">
+        <option value="" disabled>Select a hotel</option>
+        <option *ngFor="let hotel of hotels" [value]="hotel.id">
+          {{ hotel.name }}
+        </option>
+      </select>
+      <div class="error" *ngIf="employeeForm.get('hotelId')?.hasError('required') && employeeForm.get('hotelId')?.touched">
+        Hotel selection is required
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="employeeForm.invalid">Save Employee</button>
+  </form>
+</div>
