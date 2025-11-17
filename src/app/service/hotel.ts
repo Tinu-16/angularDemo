@@ -15,7 +15,7 @@ export class Hotel {
   private resultsSource = new BehaviorSubject<any[]>([]);
   results$ = this.resultsSource.asObservable();
 
-  private apiUrl = 'https://localhost:7181/api/Hotel';
+  private apiUrl = 'http://localhost:5121/api/Hotel';
 
   constructor(private http: HttpClient) {}
 
@@ -85,4 +85,11 @@ getHotelById(id: number): Observable<HotelDetailsDto> {
   return this.http.get<HotelDetailsDto>(`${this.apiUrl}/${id}`);
 }
 
+addHotel(hotelData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, hotelData);
+  }
+
+updateHotel(id: number, hotelData: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${id}`, hotelData);
+}
 }
