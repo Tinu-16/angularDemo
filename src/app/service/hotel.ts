@@ -96,4 +96,13 @@ updateHotel(id: number, hotelData: any): Observable<any> {
 deleteHotel(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getHotelDetailsWithAvailability(id: number, checkInDate: string, checkOutDate: string): Observable<HotelDetailsDto> {
+    const url = `${this.apiUrl}/details/${id}`;
+    const params = new HttpParams()
+      .set('CheckInDate', checkInDate)
+      .set('CheckOutDate', checkOutDate);
+
+    return this.http.get<HotelDetailsDto>(url, { params });
+  }
 }

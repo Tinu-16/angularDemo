@@ -19,7 +19,7 @@
       </div>
 
     </div>
-    <a class="change-link" routerLink="/home">Change Search</a>
+    <a class="change-link" routerLink="/home" [queryParams]="{ destination: destination, checkin: checkin, checkout: checkout }">Change Search</a>
   </div>
     <div class="filter">
   <div class="price-filter">

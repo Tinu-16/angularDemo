@@ -35,7 +35,7 @@ export class SearchDetails {
 
 
   viewDetails(id: number) {
-    this.router.navigate(['/hotel', id]);
+    this.router.navigate(['view-details', id]);
   }
 
 }

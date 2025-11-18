@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../../service/hotel';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, ValidationErrors } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HotelSearchParams } from '../../shared/models/LoginModel';
 
 @Component({
@@ -18,8 +18,11 @@ export class Home implements OnInit {
   minDate = new Date().toISOString().split('T')[0];
 
   
-  constructor(private fb: FormBuilder, private hotelService: Hotel, private router: Router) {
-  }
+  constructor(
+    private fb: FormBuilder, 
+    private hotelService: Hotel, 
+    private router: Router,
+    private route: ActivatedRoute) {}  
 
   ngOnInit(): void {
     this.hotelService.getDistinctCities().subscribe(data => {
@@ -36,6 +39,16 @@ export class Home implements OnInit {
     }, { 
       validators: this.dateValidator
     });
+    this.route.queryParams.subscribe(params => {
+      if (params['destination'] || params['checkin'] || params['checkout']) {
+        this.searchForm.patchValue({
+          destination: params['destination'] || '',
+          checkin: params['checkin'] || '',
+          checkout: params['checkout'] || ''
+        });
+      }
+    });
+  
   }
 
   dateValidator(form: FormGroup): ValidationErrors | null {
@@ -47,6 +60,7 @@ export class Home implements OnInit {
     }
     return null;
   }
+  
   
   getImagePath(city: string): string {
     const fileName = city.toLowerCase().replace(/\s+/g, '') + '.jpg';

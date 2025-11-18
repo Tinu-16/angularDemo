@@ -1,0 +1,15 @@
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <div class="booking-summary">
+    <p><strong>Room ID:</strong> {{ roomId }}</p>
+    <p><strong>Check-in:</strong> {{ checkInDate }}</p>
+    <p><strong>Check-out:</strong> {{ checkOutDate }}</p>
+    <p><strong>Price:</strong> {{ price }}</p>
+  </div>
+
+  <form (ngSubmit)="confirmBooking()" #checkoutForm="ngForm">
+    <button type="submit" [disabled]="!checkoutForm.valid">Proceed To Payment</button>
+  </form>
+</div>
+

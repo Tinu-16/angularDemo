@@ -1,0 +1,22 @@
+<div class="hotel-details" *ngIf="hotel">
+  <h1>{{ hotel.name }}</h1>
+  <p>{{ hotel.address }}, {{ hotel.city }}, {{ hotel.country }}</p>
+  <p>Rating: {{ hotel.averageRating }}</p>
+
+  <h2>Reviews</h2>
+  <div class="review-card" *ngFor="let review of hotel.reviews">
+    <p><strong>{{ review.customerName }}</strong> ({{ review.rating }}/10)</p>
+    <p>{{ review.comment }}</p>
+  </div>
+
+  <h2>Available Rooms</h2>
+  <div class="room-list">
+    <div class="room-card" *ngFor="let room of hotel.rooms">
+      <h3>Room No:{{ room.roomNumber }}</h3>
+      <p>Type:{{ room.roomTypeName }}</p>
+      <p>Price: ${{ room.price }} per night</p>
+      <p>Capacity: {{ room.capacity }} guests</p>
+      <button (click)="bookRoom(room.id,room.price)">Book</button>
+    </div>
+  </div>
+</div>

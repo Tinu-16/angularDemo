@@ -11,12 +11,18 @@ import { EmployeeList } from './feature/admin/dashboard/employee-list/employee-l
 import { EmployeeForm } from './feature/admin/dashboard/employee-form/employee-form';
 import { RoomTypeList } from './feature/admin/dashboard/room-type-list/room-type-list';
 import { RoomTypeForm } from './feature/admin/dashboard/room-type-form/room-type-form';
+import { UserLogin } from './auth/user/user-login/user-login';
+import { ViewDetails } from './feature/view-details/view-details';
+import { CheckOut } from './feature/check-out/check-out';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: 'home',component: Home},
+    { path: 'user-login',component: UserLogin},
     { path: 'login',component: Login},
     { path: 'search-results',component: SearchResult},
+    { path: 'view-details/:id',component: ViewDetails},
+    { path: 'checkout',component: CheckOut},
     { path: 'hotel/:id', component: HotelDetails },
     { 
         path: 'dashboard', component: Dashboard , children:[
