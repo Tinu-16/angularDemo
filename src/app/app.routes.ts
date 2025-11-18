@@ -6,11 +6,13 @@ import { Dashboard } from './feature/admin/dashboard/dashboard';
 import { HotelList } from './feature/admin/dashboard/hotel-list/hotel-list';
 import { HotelDetails } from './feature/admin/hotel-details/hotel-details';
 import { AddHotel } from './feature/admin/dashboard/add-hotel/add-hotel';
+import { UserLogin } from './auth/user/user-login/user-login';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: 'home',component: Home},
     { path: 'login',component: Login},
+    { path: 'user-login',component: UserLogin},
     { path: 'search-results',component: SearchResult},
     { path: 'hotel/:id', component: HotelDetails },
     { 
